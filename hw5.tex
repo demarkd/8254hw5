@@ -1,0 +1,375 @@
+\documentclass[english,letter,doublesided]{article}
+\usepackage{rotating}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath,calligra,mathrsfs,amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{relsize}
+
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\newcommand\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{\mathbf{Spec}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\Aa}{\mathscr{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}	
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\Ff}{\mathscr{F}}
+\newcommand{\Gg}{\mathscr{G}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\fsc}{\mathscr{F}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Ical}{\mathcal{I}}
+\usepackage{graphicx}
+\newcommand{\ldt}{\bullet}
+\newcommand{\into}{\hookrightarrow}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter	
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFo\newcommand{\PP}{\mathbb{P}}ntShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exle}[thm]{Example}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[thm]
+\newtheorem*{remark*}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem*{notn*}{Notation}
+%FINAL
+\newcounter{hwn}
+\newcounter{ryr}
+\setcounter{ryr}{226}
+\newcommand{\course}{8254}
+\newcommand{\due}{29 Vent\^ose \Roman{ryr}} 
+\setcounter{hwn}{4}
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH \course~Homework \Roman{hwn}}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH \course~ Homework \Roman{hwn}}
+\cfoot{\thepage}
+\renewcommand{\bar}{\overline}
+
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id} }
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\clim}{\varprojlim}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\restr}[2]{{\evat{#1}{#2}{}}}
+\DeclareMathOperator{\codim}{codim}
+\newcommand{\imp}[1]{\underline{#1}}
+\newcommand{\ihm}{\imp{\hom}}
+\newcommand{\him}{\ihm(\FF,\GG)}
+\newcommand{\incla}{\hookrightarrow}
+\newcommand{\pre}{\mathrm{pre}}
+\newcommand{\Fp}{{\FF_P}}
+\renewcommand{\thethm}{\arabic{section}.\Alph{thm}}
+\newcommand{\gph}{\varphi}
+\newcommand{\fv}[2]{\frac{x_{#1}}{x_{#2}}}
+\newcommand{\va}{\vec{a}}
+\newcommand{\vai}[1]{\va^{(#1)}}
+\newcommand{\csch}{\cat{Sch}}
+\newcommand{\cset}{\cat{Set}}
+\newcommand{\aff}{\mathrm{aff}}
+%\tikzcdset{column sep/tiny=.1cm}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{algeo.bib}
+\DeclareMathOperator{\proj}{Proj}
+\newcommand{\tpsi}{{\tilde{\psi}}}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\tvphi}{{\tilde{\varphi}}}
+\newcommand{\hol}[2]{{#1}_{[#2]}}
+\newcommand{\red}{\mathrm{red}}
+\newcommand{\Rfr}{\mathfrak{R}}
+\begin{document}\maketitle
+\prob{1}\begin{prop*}
+	We let $\phi:X\to Y$ be a morphism of schemes which is a homeomorphism on the level of underlying topological spaces. We identify the topological space of $X$ with that of $Y$.  The following are equivalent:
+	\begin{enumerate}[label=(\arabic*)]
+		\item $X=Y^\red$
+		\item On each open affine $\spec B\cong V\subset Y$, $\phi^{-1}(V)\cong \spec B/\Rfr(B)$.
+		\item $X$ is the closed subscheme of $Y$ which is determined by the sheaf of ideals $\Rfr(B)$ for affine open $\spec B\cong V\subset Y$.
+	\end{enumerate}
+\end{prop*}
+\begin{proof}
+	Um\dots unless I'm deeply misunderstanding the question, the only thing to check is that (as the problem's statement gives that the sheaf of ideals as in (3) does indeed correspond to a closed subscheme) is that the closed subscheme which results from the sheaf of ideals given by (3) is indeed the closed subscheme given by (2), and vice-versa. However, each of these are patently obvious, as such a sheaf of ideals $\Ical$ corresponds to the closed subscheme given on the open affine level by $\OO_Y(V)/\Ical(V)$.
+\end{proof}
+\prob{2}
+\begin{prop*}
+	We let $R=\bigoplus_{m\geq 0} R_m$ be a positively graded ring, and $f,g\in R$ with $D_+(g)\subseteq D_+(f)$ and $\abs{f}=d$, $\abs{g}=e$. Then, $(R_g)_0\cong ((R_f)_0)_{g^d/f^e}$
+\end{prop*}
+\begin{proof}
+We claim that $((R_f)_0)_{g^d/f^e}$ is naturally a subring of $(R_g)_0$. Indeed, we note that by homework 2 problem 4, the maps $R\to R_f\to R_g$ commute with the map $R\to R_g$. We note as well that under the map $ \phi: R_f\to R_g$, we have that the image of $g^d/f^e$ is a unit. Hence, restricting to $(R_f)_0$, we have that $\phi$ factors uniquely through $((R_f)_0)_{g^d/f^e}$ into $R_g$, thus identifying $((R_f)_0)_{g^d/f^e}$ with a subring of $R_g$. Observing that localization maps on graded rings are graded maps then proves our claim. We now wish to show that $(R_g)_0\subseteq ((R_f)_0)_{g^d/f^e}$. Indeed, we let $x\in (R_g)_0$ be arbitrary, and write $x=\frac{c}{g^k}$ with $k\geq 0$. Then, \begin{align*}
+	\frac{c}{g^k}=\frac{g^{d\ell-k}c}{f^{\ell e}}/\left(\frac{g^d}{f^e}\right)^\ell
+\end{align*} for any $\ell\geq k/d$, so as we have expressed an arbitrary $x\in (R_g)_0$ as an element of $((R_f)_0)_{g^d/f^e}$, we have completed our proof. 
+\end{proof}
+\prob{3} We let $R=\bigoplus_{m\geq 0} R_m$ be a graded ring, with $f\in R_1$ \prt{1}\begin{prompt*}
+	Construct a ring homomorphism $\phi: (R_f)_0\to R/(1-f)$
+\end{prompt*} 
+\begin{proof}[Response]
+	We define our ring homomorphism by $\phi:\frac{a}{f^k}\mapsto a$. To show that $\phi$ is well-defined, we suppose $\frac{a}{f^k}=\frac{b}{f^m}$. We then have from first principles of localization that there exists some $\ell\in \NN$ such that \begin{align*}0&=f^{\ell}(f^ma-f^kb)\\
+\implies f^{\ell_+m}a&=f^{\ell+k}b\\
+=a-(1-f^{\ell+m})a&=b-(1-f^{\ell+k})b
+	\end{align*} 
+	Thus, $a\equiv b\mod (1-f)$, so $\phi$ is indeed well-defined. To see that $\phi$ respects products, we note that $\phi(\frac{a}{f^j}\frac{b}{f^k})=\phi(\frac{ab}{f^{k+j}})=ab=\phi(\frac{a}{f^j})\phi(\frac{b}{f^k})$. Finally, to see that $\phi$ respects addition, we let $k\geq j$ and note $\phi(\frac{a}{f^j}+\frac{b}{f^k})=\phi(\frac{f^{k-j}a+b}{f^k})=f^{k-j}a+b=a+b-(1-f^{k-j})a\equiv a+b \mod (1-f)=\phi(\frac{a}{f^j})+\phi(\frac{b}{f^k})$.
+\end{proof}
+\prt{2}
+\begin{prompt*}
+	Show that $\psi: R/(1-f)\to (R_f)_0$ which maps $a\in R_m\mapsto \frac{a}{f^m}$ defines a ring homomorphism which is inverse to $\phi$.
+\end{prompt*}
+\begin{proof}[Response]
+We let $\tpsi:R\to (R_f)_0$	be defined on homogenous generators by $R_m\ni a\mapsto \frac{a}{f^m}$ and seek to show $\tpsi$ is a ring homomorphism. Indeed, for $a,b\in R_m$, we have that $\tpsi(ab)=\frac{ab}{f^{2m}}=\frac{a}{f^m}\frac{b}{f^m}=\tpsi(a)\tpsi(b)$, and $\tpsi(a)+\tpsi(b)=\frac{a}{f^m}+\frac{b}{f^m}=\frac{a+b}{f^m}=\tpsi(a+b)$. That $\tpsi$ respects ring addition and multiplication for non-homogeneous elements follows by linearity, so it is indeed a ring homomorphism. We note that $\tpsi(1-f)=\tpsi(1)-\tpsi(f)=\frac{1}{f^0}-\frac{f}{f^1}=1-1=0$. Thus, $(1-f)\subseteq \ker \tpsi$, so $\tpsi$ factors through $R/(1-f)$ to produce a well-defined ring homomorphism $\psi:R/(1-f)\to (R_f)_0$ as desired.
+
+We now show that $\phi$ and $\psi$ are indeed inverses. Indeed, for $\frac{a}{f^k}\in (R_f)_0$, we have that $a\in R_k$, so $\psi(\phi(\frac{a}{f^k}))=\psi(a)=\frac{a}{f^k}$. On the other hand, for $a\in R/(1-f)$ with some coset representative $\tilde a\in R_m$, we have that $\phi(\psi(a))=\phi(\frac{a}{f^m})=a$. Thus indeed, $\phi$ and $\psi$ are mutual isomorphisms.
+\end{proof}
+\prt{3}
+\begin{cor*}
+For $g\in R_d$, $(R_g)_0\cong R^{[d]}/(1-g)$ where $R^{[d]}:=\bigoplus_{m\geq 0}R_{dm}$ is the $d$th Veronese subring. 
+\end{cor*}
+\begin{proof}
+	We consider $R^{[d]}$ as a $d\ZZ$-graded ring. As $d\ZZ$ is group-isomorphic (so certainly semigroup-isomorphic) to $\ZZ$, we may identify the grading on $R^{[d]}$ with its isomorphic image in $\ZZ$. Under such an isomorphism (modulo a sign choice), we have that $\abs{g}=1$ and hence we are reduced to the situation of parts (a) and (b).
+\end{proof}
+\prob{4} \begin{prop*}
+	For $x\in X:=\proj S$ with $x\sim \pfr\triangleleft S$ a homogenous prime of $S$ not containing $S_+$, $\OO_{X,x}=S_{[\pfr]}$, where $\hol{S}{\pfr}$ is $S$ localized at all homogenous elements not in $\pfr$. 
+\end{prop*}
+\begin{proof}
+	We have that $\OO_{X,x}=\colim_{x\in U}\OO_X(U)$, and that it is sufficient to restrict to the basic open sets containing $x$, that is, $\OO_{X,x}=\colim_{f\notin \pfr;\;f\in S_m,\,m>0}\OO_{X}(D(f))$, or \begin{equation}\OO_{X,x}=\colim_{f\notin \pfr;\;f\in S_m,\,m>0}(S_f)_0\label{dirsys}.\end{equation} We let the restriction maps in the direct system of \eqref{dirsys} be denoted $\psi_{f,g}:(S_f)_0\to (S_g)_0$ for $D_+(f)\supseteq D_+(g)$. We rewrite our definition $\hol{S}{\pfr}:=\{\frac{a}{f}:\exists m( a\in S,\;a,f\in S_m),\;f\notin \pfr\}$ under the standard relations for localization. We let $A$ be a co-cone for the direct system described  in \eqref{dirsys} with maps $\phi_f:(S_f)_0\to A$. Then, if $\phi_f(\frac{a}{f^k})\neq 0$, we have that $\psi_{f,g}(\frac{a}{f^k})\neq 0$ for all $g$ such that $D_+(f)\supset D_+(g)$, so $\frac{a}{f^k}\in \hol{S}{\pfr}$ thus allowing us to define a map $\hol{S}{\pfr}\to A$ commuting with the co-cone structure necessarily uniquely. This confirms the proposition.
+\end{proof}
+\prob{5} We let $R_\ldt$ and $S_\ldt$ be graded rings.
+\begin{prop*}
+	A graded map $\phi:S_\ldt\to R_\ldt$ induces a morphism of schemes $\proj R\setminus V_+(\phi(S_+))\to \proj S$.
+\end{prop*}
+\begin{proof}
+	We note that $\proj R\setminus V_+(\phi(S_+))=D_+(\phi(S_+))=\bigcup_{f\in S_+} D(\phi(f))\subset \proj R$. Thus, it suffices to construct maps $D_+(\phi(f))\to D_+(f)$ and show that these maps glue to form the desired morphism of schemes. We have that $D_+(f)\cong \spec (S_f)_0$ and $D_+(\phi(f))\cong \spec (R_{\phi(f)})_0$ and thus it suffices to give a morphism of rings $(S_f)_0\to (R_{\phi(f)})_0$. We claim $\phi$ extends naturally to a map $S_f\to R_{\phi(f)}$ by universality. To see this, we let $\iota: R\to R_{\phi(f)}$ be the localization map (which we note is a \emph{graded} map) and consider $\iota\circ \phi: S\to R_{\phi(f)}$. As $(\iota\circ \phi)(f)\in R_{\phi(f)}^\times$, this induces a map $\tilde\phi:S_f\to R_{\phi(f)}$ by universal property of location. Furthermore, as $\iota$ and $\phi$ are graded maps, $\tilde\phi$ is as well, hence restricting to a map $\bar\phi(f):(S_f)_0\to (R_{\phi(f)})_0$ by $\frac{a}{f^k}\mapsto \frac{\phi(a)}{\phi(f)^k}$. As these maps are simply applying $\phi$ to numerator and denominator, it is immediately clear that they are compatible on intersections $D(fg)$, thus gluing to a map $\proj R\setminus V_+(\phi(S_+))\to \proj S$. 
+\end{proof}
+\prob{6}
+\begin{cor*}
+	In the context of the previous problem, if $\rad(\phi(S_+))=R_+$, then $V_+(\phi(S_+))=\emptyset$ (and hence $\phi$ induces a map $\proj R\to \proj S$).
+\end{cor*}
+\begin{proof}
+By the Nullstellensatz, $V(I)=V(\rad (I))$ for any $I\subset R$ (in $\spec R$). Thus, if $\rad(\phi(S_+))=R_+$, we have that $V(\phi(S_+))=V(R_+)$. As $V_+(I)\subset \proj R$ is the set $V(I)\cap \proj R$, we have that $V_+(\phi(S_+))=V_+(R_+)=\emptyset$, with this last equality coming from the definition of the $\proj$ operator, as $\proj R$ is the set of homogenous prime ideals not containing $R_+$ (i.e. the set of homogenous prime ideals not contained in $V_+(R_+)$).
+\end{proof}
+\prob{7}\begin{prop*}
+ The inclusion of graded rings $\phi:S_{n\ldt}\into S_n$ induces an isomorphism $\proj S_\ldt\to \proj S_{n\ldt}$. 
+\end{prop*}
+\begin{proof} We first note that indeed, $\rad(\phi(S_{n+}))=S_+$ (as $f^n\in S_{n+}$ for any $f\in S_+$), so by problem 6, $\phi$ does induce a morphism of schemes $\proj S_\ldt\to \proj S_{n\ldt}$.
+	We note that in $\proj S_\ldt$,  $D_+(f)=D_+(f^n)$ for any $f\in S_+$ by a Nullstellensatz argument. We note as well that $f^n\in S_{n+}$ that is, the irrelevant ideal of $S_{n\ldt}$. As $f^n=\phi(f^n)$ for all $f$, we note that the map $((S_{n\ldt})_{f^n})_0\to ((S_\ldt)_f)_0$ is necessarily an injection by our response to problem 5. To show surjectivity, we let $a/f^k\in ((S_\ldt)_f)_0$. Then, $af^{n-k}\in S_{n\ldt}$, and indeed $af^{n-k}/f^n\in  ((S_{n\ldt})_{f^n})_0$ with $\phi(af^{n-k}/f^n)=a/f^k$. Thus, the induced map on an affine open cover of $\proj S_\ldt$ is an affine map corresponding to a ring isomorphism with targets forming an open cover of $\proj S_{n\ldt}$, so indeed the induced map on $\proj S_\ldt$ is an isomorphism.	\end{proof}
+\prob{8}
+\begin{prop*}
+	If $\varphi:S_\ldt \twoheadrightarrow R_\ldt$ is a surjective graded map, the induced morphism on schemes has domain $\proj R_\ldt$ and $\proj R_\ldt \to \proj S_\ldt$ is a closed embedding.
+\end{prop*}
+\begin{proof}
+We note that as $\varphi$ is a graded map, we have that $\varphi^{-1}(R_m)\subset S_m$. Moreover, as it is surjective, we have that $\varphi(S_m)=R_m$, and $\varphi(S_\ldt)=R_\ldt$. Then, by problem 6, we have that $\varphi$ induces a map $\tvphi:\proj R_\ldt \to \proj S_\ldt$. To see that $\tvphi$ is a closed embedding, we first note that it is affine by construction (in problem 5). We note that $\varphi(D(f)):S_f\to R_{\varphi(f)}$ is surjective by a quick first principles argument for any $f\in S_m$ for any $m>0$. As $D(\varphi(f))$ over such $f$ forms an open cover by basic opens on $\proj R_\ldt$ by surjectivity of $\varphi$, by problem 6 on the previous assignment $\tvphi$ is a closed embedding.
+\end{proof}
+\end{document}
