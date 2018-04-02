@@ -293,83 +293,82 @@
 \newcommand{\hol}[2]{{#1}_{[#2]}}
 \newcommand{\red}{\mathrm{red}}
 \newcommand{\Rfr}{\mathfrak{R}}
+\newcommand{\bph}{\overline{\phi}}
 \begin{document}\maketitle
-\prob{1}\begin{prop*}
-	We let $\phi:X\to Y$ be a morphism of schemes which is a homeomorphism on the level of underlying topological spaces. We identify the topological space of $X$ with that of $Y$.  The following are equivalent:
-	\begin{enumerate}[label=(\arabic*)]
-		\item $X=Y^\red$
-		\item On each open affine $\spec B\cong V\subset Y$, $\phi^{-1}(V)\cong \spec B/\Rfr(B)$.
-		\item $X$ is the closed subscheme of $Y$ which is determined by the sheaf of ideals $\Rfr(B)$ for affine open $\spec B\cong V\subset Y$.
-	\end{enumerate}
-\end{prop*}
-\begin{proof}
-	Um\dots unless I'm deeply misunderstanding the question, the only thing to check is that (as the problem's statement gives that the sheaf of ideals as in (3) does indeed correspond to a closed subscheme) is that the closed subscheme which results from the sheaf of ideals given by (3) is indeed the closed subscheme given by (2), and vice-versa. However, each of these are patently obvious, as such a sheaf of ideals $\Ical$ corresponds to the closed subscheme given on the open affine level by $\OO_Y(V)/\Ical(V)$.
-\end{proof}
-\prob{2}
-\begin{prop*}
-	We let $R=\bigoplus_{m\geq 0} R_m$ be a positively graded ring, and $f,g\in R$ with $D_+(g)\subseteq D_+(f)$ and $\abs{f}=d$, $\abs{g}=e$. Then, $(R_g)_0\cong ((R_f)_0)_{g^d/f^e}$
-\end{prop*}
-\begin{proof}
-We claim that $((R_f)_0)_{g^d/f^e}$ is naturally a subring of $(R_g)_0$. Indeed, we note that by homework 2 problem 4, the maps $R\to R_f\to R_g$ commute with the map $R\to R_g$. We note as well that under the map $ \phi: R_f\to R_g$, we have that the image of $g^d/f^e$ is a unit. Hence, restricting to $(R_f)_0$, we have that $\phi$ factors uniquely through $((R_f)_0)_{g^d/f^e}$ into $R_g$, thus identifying $((R_f)_0)_{g^d/f^e}$ with a subring of $R_g$. Observing that localization maps on graded rings are graded maps then proves our claim. We now wish to show that $(R_g)_0\subseteq ((R_f)_0)_{g^d/f^e}$. Indeed, we let $x\in (R_g)_0$ be arbitrary, and write $x=\frac{c}{g^k}$ with $k\geq 0$. Then, \begin{align*}
-	\frac{c}{g^k}=\frac{g^{d\ell-k}c}{f^{\ell e}}/\left(\frac{g^d}{f^e}\right)^\ell
-\end{align*} for any $\ell\geq k/d$, so as we have expressed an arbitrary $x\in (R_g)_0$ as an element of $((R_f)_0)_{g^d/f^e}$, we have completed our proof. 
-\end{proof}
-\prob{3} We let $R=\bigoplus_{m\geq 0} R_m$ be a graded ring, with $f\in R_1$ \prt{1}\begin{prompt*}
-	Construct a ring homomorphism $\phi: (R_f)_0\to R/(1-f)$
-\end{prompt*} 
-\begin{proof}[Response]
-	We define our ring homomorphism by $\phi:\frac{a}{f^k}\mapsto a$. To show that $\phi$ is well-defined, we suppose $\frac{a}{f^k}=\frac{b}{f^m}$. We then have from first principles of localization that there exists some $\ell\in \NN$ such that \begin{align*}0&=f^{\ell}(f^ma-f^kb)\\
-\implies f^{\ell_+m}a&=f^{\ell+k}b\\
-=a-(1-f^{\ell+m})a&=b-(1-f^{\ell+k})b
-	\end{align*} 
-	Thus, $a\equiv b\mod (1-f)$, so $\phi$ is indeed well-defined. To see that $\phi$ respects products, we note that $\phi(\frac{a}{f^j}\frac{b}{f^k})=\phi(\frac{ab}{f^{k+j}})=ab=\phi(\frac{a}{f^j})\phi(\frac{b}{f^k})$. Finally, to see that $\phi$ respects addition, we let $k\geq j$ and note $\phi(\frac{a}{f^j}+\frac{b}{f^k})=\phi(\frac{f^{k-j}a+b}{f^k})=f^{k-j}a+b=a+b-(1-f^{k-j})a\equiv a+b \mod (1-f)=\phi(\frac{a}{f^j})+\phi(\frac{b}{f^k})$.
-\end{proof}
-\prt{2}
-\begin{prompt*}
-	Show that $\psi: R/(1-f)\to (R_f)_0$ which maps $a\in R_m\mapsto \frac{a}{f^m}$ defines a ring homomorphism which is inverse to $\phi$.
-\end{prompt*}
-\begin{proof}[Response]
-We let $\tpsi:R\to (R_f)_0$	be defined on homogenous generators by $R_m\ni a\mapsto \frac{a}{f^m}$ and seek to show $\tpsi$ is a ring homomorphism. Indeed, for $a,b\in R_m$, we have that $\tpsi(ab)=\frac{ab}{f^{2m}}=\frac{a}{f^m}\frac{b}{f^m}=\tpsi(a)\tpsi(b)$, and $\tpsi(a)+\tpsi(b)=\frac{a}{f^m}+\frac{b}{f^m}=\frac{a+b}{f^m}=\tpsi(a+b)$. That $\tpsi$ respects ring addition and multiplication for non-homogeneous elements follows by linearity, so it is indeed a ring homomorphism. We note that $\tpsi(1-f)=\tpsi(1)-\tpsi(f)=\frac{1}{f^0}-\frac{f}{f^1}=1-1=0$. Thus, $(1-f)\subseteq \ker \tpsi$, so $\tpsi$ factors through $R/(1-f)$ to produce a well-defined ring homomorphism $\psi:R/(1-f)\to (R_f)_0$ as desired.
+	\prob{1}
+	\prob{2}
+	\prob{3}
+	\begin{prop*} For $R$, $S$ projective $A$-schemes,
+		$\proj R\times_A\proj S\cong \proj (R\#_A S)$
+	\end{prop*} \begin{proof}
+\begin{lemma} For $f\in R$, $g\in S$, $e:=\abs{g}/\gcd(\abs{f},\abs{g})$, $d:=\abs{f}/\gcd(\abs{f},\abs{g})$,
+	$((R\#_A)_{f^e\otimes g^d})_0\cong (R_f)_0\otimes_A (S_g)_0$.
+\end{lemma}
+\begin{subproof}
+	We let $\phi:((R\#_A)_{f^d\otimes g^e})_0\cong (R_f)_0\otimes_A (S_g)_0$ map $(a\otimes b)/(f^e\otimes g^d)^k\mapsto \frac{a}{f^{ek}}\otimes \frac{b}{g^{dk}}$.
+	
+	 We first show that this map is well defined. We suppose $$\frac{a\otimes b}{(f^e\otimes g^d)^k}=\frac{c\otimes h}{(f^e\otimes g^d)^\ell}.$$
+	Then, we have that there exists some $m$ such that $$(f^e\otimes g^d)^m\left((a\otimes b)(f^e\otimes g^d)^\ell-(c\otimes h)(f^e\otimes g^d)^k\right)=0$$
+	i.e. $$af^{e(\ell+m)}\otimes bg^{d(m+\ell)}=cf^{e(k+m)}\otimes hg^{d(k+m)}$$
+	in $R_{e(k+\ell+m)\abs{f}}\otimes S_{d(k+\ell +m)\abs{g}}$. Thus, there is some $r\in A$ such that $af^{e(\ell+m)}=rcf^{e(k+m)}$ and $rbg^{d(m+\ell)}=hg^{d(k+m)}$ modulo relabeling. Then, \begin{align*}
+	\phi\left(\frac{a\otimes b}{(f^e\otimes g^d)^k}\right)=\frac{a}{f^{ek}}\otimes \frac{b}{g^{dk}}&=\frac{af^{e(\ell+m)}}{f^{e(k+\ell+m)}}\otimes \frac{bg^{d(\ell+m)}}{g^{d(k+\ell+m)}}\\
+		&=\frac{rcf^{e(k+m)}}{f^{e(k+\ell+m)}}\otimes \frac{bg^{d(\ell+m)}}{g^{d(k+\ell+m)}}\\
+	&=\frac{cf^{e(k+m)}}{f^{e(k+\ell+m)}}\otimes \frac{rbg^{d(\ell+m)}}{g^{d(k+\ell+m)}}\\
+	&=\frac{cf^{e(k+m)}}{f^{e(k+\ell+m)}}\otimes \frac{hg^{d(k+m)}}{g^{d(k+\ell+m)}}\\
+	&=\frac{c}{f^{e\ell}}\otimes \frac{h}{g^{d\ell}}=\phi\left(\frac{c\otimes h}{(f^e\otimes g^d)^\ell}\right),
+	\end{align*}
+	So indeed, our map is well-defined.
 
-We now show that $\phi$ and $\psi$ are indeed inverses. Indeed, for $\frac{a}{f^k}\in (R_f)_0$, we have that $a\in R_k$, so $\psi(\phi(\frac{a}{f^k}))=\psi(a)=\frac{a}{f^k}$. On the other hand, for $a\in R/(1-f)$ with some coset representative $\tilde a\in R_m$, we have that $\phi(\psi(a))=\phi(\frac{a}{f^m})=a$. Thus indeed, $\phi$ and $\psi$ are mutual isomorphisms.
+We now show injectivity. We suppose $$\phi\left(\frac{a\otimes b}{(f^e\otimes g^d)^k}\right)=\phi\left(\frac{c\otimes h}{(f^e\otimes g^d)^\ell}\right).$$
+Then, we have that $$\frac{a}{f^{ek}}\otimes \frac{b}{g^{dk}}=\frac{c}{f^{e\ell}}\otimes \frac{h}{g^{d\ell}},$$ so as above, without loss of generality there is some $r\in A$ such that \begin{align*}
+		&\frac{a}{f^{ek}}=r\frac{c}{f^{e\ell}}\\\text{and}\hspace{2em}&r\frac{b}{g^{dk}}=\frac{h}{g^{d\ell}}
+	\end{align*}
+	So we then have that there exist $m,n\in \NN$ such that \begin{align*}
+	f^m(f^{e\ell}a-rcf^{ek})&=0\\
+	g^n(g^{d\ell}rb-hg^{dk})&=0
+	\end{align*}
+	i.e.,
+	\begin{align}
+	\label{3eq1}f^{e(\ell+m}a&=rcf^{e(k+m)}\\
+	\label{3eq2}g^{d(\ell+n)}rb&=hg^{d(k+n)}
+	\end{align}
+	We let $p=\max{(m,n)}$. Then, (\ref{3eq1},\ref{3eq2}) imply 
+		\begin{align*}
+	f^{e(\ell+p)}a&=rcf^{e(k+p)}\\
+	g^{d(\ell+p)}rb&=hg^{d(k+p)}.
+	\end{align*}
+	Thus, we have that \begin{equation}\label{3segeq}\left(f^{e(\ell+p)}a\otimes g^{d(\ell+p)}b\right)-\left(f^{e(p+k)}c\otimes f^{e(p+k)}h \right)=0\end{equation} in $R\#_A S$. We may rephrase \eqref{3segeq} to \eqref{3pleq}
+	\begin{equation}\label{3pleq}
+		(f^e\otimes g^d)^p\left((a\otimes b)(f^e\otimes g^d)^\ell-(c\otimes h)(f^e\otimes g^d)^k\right)=0
+	\end{equation}
+%Tautologically, this implies \begin{equation}\label{3eq3}
+%	f^{e(\ell+p)}a\otimes g^{d(\ell+p)}rb=rcf^{e(k+p)}\otimes hg^{d(k+p)}
+%\end{equation}
+%in $R\#_A S$. We reprhase \eqref{3eq3} to \eqref{3eq4}:
+%\begin{equation}\label{3eq4}
+%\left(f^e\otimes g^d\right)^p\left((f^{e}\otimes g^d)^\ell a\otimes rb\right)=\left(f^e\otimes g^d\right)^p\left(rcf^{ek}\otimes hg^{dk}\right)
+%\end{equation}
+
+ Finally, we pass through to the localization. By first principles of localization, \eqref{3pleq} implies \begin{equation*}
+ \frac{a\otimes b}{(f^e\otimes g^d)^k}=\frac{c\otimes h}{(f^e\otimes g^d)^\ell}
+ \end{equation*} as desired.
+ 
+ Now, \textbf{finally,} we show surjectivity. We let $$r=\frac{a}{f^{dk}}\otimes \frac{b}{g^{e\ell}}\in (R_f)_0\otimes (S_g)_0$$ be arbitrary (making use of the equalities $R_f=R_{f^e}$, $S_g=S_{g^d}$ in order to write it in such a form). We let $m=\max(k,\ell)$ and then have that $$r=\frac{af^{m-k}}{f^{dm}}\otimes \frac{bf^{m-\ell}}{g^{em}}=\phi\left(\frac{af^{m-k}\otimes bf^{m-\ell}}{(f^e\otimes g^d)^m}\right).$$ This completes our grotesquely ugly proof.
+\end{subproof}
+To see that the main proposition follows from the lemma, we note that the isomorphism of rings given in the lemma gives an isomorphism of open affine subschemes $D_+(f^e\otimes g^d)\cong D_+(f)\times_AD_+(g)$. As $\{D_+(f^e\otimes g^d)\}_{f,g\in R\times S}$ is an open affine cover of $\proj(R\#_A S)$ and $\{D_+(f)\times_AD_+(g)\}_{f,g\in R\times S}$ gives an open affine cover of $\proj R\times_A\proj S$, the isomorphisms on open affines glue to an isomorphism of schemes as desired.
 \end{proof}
-\prt{3}
-\begin{cor*}
-For $g\in R_d$, $(R_g)_0\cong R^{[d]}/(1-g)$ where $R^{[d]}:=\bigoplus_{m\geq 0}R_{dm}$ is the $d$th Veronese subring. 
-\end{cor*}
+	\prob{4}
+	\prob{5}We let $S:=k[x,y]$ and $R:=k[u,v,w]/\idl{uv-w^2}$
+	\begin{prop*}
+		$S_{2\ldt}\cong R$ by the map $\phi:R\to S_{2\ldt}$ mapping $u\mapsto x^2$, $v\mapsto y^2$, $w\mapsto xy$. 
+	\end{prop*}
 \begin{proof}
-	We consider $R^{[d]}$ as a $d\ZZ$-graded ring. As $d\ZZ$ is group-isomorphic (so certainly semigroup-isomorphic) to $\ZZ$, we may identify the grading on $R^{[d]}$ with its isomorphic image in $\ZZ$. Under such an isomorphism (modulo a sign choice), we have that $\abs{g}=1$ and hence we are reduced to the situation of parts (a) and (b).
+We define a map $\bph: k[u,v,w]\to S_{2\ldt}$ by $u\mapsto x^2$, $v\mapsto y^2$, $w\mapsto xy$. Then, $(uv-w^2)\mapsto x^2y^2-(xy)^2=0$, so $\bph$ induces a well-defined map $\phi:R\to S_{2\ldt}$ as described in the proposition. To show surjectivity, we consider a monomial $m(x,y)=x^{2m-k}y^k\in S_{2m}$. If $k$ is even, we write $k=2j$ and have that $m(x,y)=(x^2)^{m-j}y^j=\phi(u^{m-j}v^{j})$. If $k$ is odd, we write $k=2j-1$ and have that $m(x,y)=(x^2)^{m-j}(y^2)^{j-1}(xy)=\phi(u^{m-j}v^{j-1}w)$. Thus, as $\phi$ surjects from a subset of $R$ to a generating set of $S_{2\ldt}$ as a $k$-module, we have that $\phi$ is indeed surjective. Finally, to show injectivity, we construct an explicit splitting map $\psi$, then show that $\psi$ is indeed surjective. We map \begin{equation*}\psi: \left(x^{2m-k}y^k\in S_{2m}\right)\mapsto \begin{cases}
+u^{2m-2j}v^j&k=2j\\
+u^{m-j}v^{j-1}w&k=2j-1.
+\end{cases}\end{equation*} Inspection immediately shows that $\phi\circ \psi=\id_{S_{2\ldt}}$. We let $m(u,v,w)=u^av^bw^c\in R_m$ and write $c=2d+\delta$ with $\delta\in \{0,1\}$. Then, $u^av^bw^c-u^{a+d}v^{b+d}w^\delta=u^av^bw^\delta(w^{2d}-u^dv^d)\in \idl{uv-w^2}$, so we have that an arbitrary monomial $m(u,v,w)$ is indeed in the image of $\psi$ modulo $\idl{uv-w^2}$. We have now completed our proof.
 \end{proof}
-\prob{4} \begin{prop*}
-	For $x\in X:=\proj S$ with $x\sim \pfr\triangleleft S$ a homogenous prime of $S$ not containing $S_+$, $\OO_{X,x}=S_{[\pfr]}$, where $\hol{S}{\pfr}$ is $S$ localized at all homogenous elements not in $\pfr$. 
-\end{prop*}
-\begin{proof}
-	We have that $\OO_{X,x}=\colim_{x\in U}\OO_X(U)$, and that it is sufficient to restrict to the basic open sets containing $x$, that is, $\OO_{X,x}=\colim_{f\notin \pfr;\;f\in S_m,\,m>0}\OO_{X}(D(f))$, or \begin{equation}\OO_{X,x}=\colim_{f\notin \pfr;\;f\in S_m,\,m>0}(S_f)_0\label{dirsys}.\end{equation} We let the restriction maps in the direct system of \eqref{dirsys} be denoted $\psi_{f,g}:(S_f)_0\to (S_g)_0$ for $D_+(f)\supseteq D_+(g)$. We rewrite our definition $\hol{S}{\pfr}:=\{\frac{a}{f}:\exists m( a\in S,\;a,f\in S_m),\;f\notin \pfr\}$ under the standard relations for localization. We let $A$ be a co-cone for the direct system described  in \eqref{dirsys} with maps $\phi_f:(S_f)_0\to A$. Then, if $\phi_f(\frac{a}{f^k})\neq 0$, we have that $\psi_{f,g}(\frac{a}{f^k})\neq 0$ for all $g$ such that $D_+(f)\supset D_+(g)$, so $\frac{a}{f^k}\in \hol{S}{\pfr}$ thus allowing us to define a map $\hol{S}{\pfr}\to A$ commuting with the co-cone structure necessarily uniquely. This confirms the proposition.
-\end{proof}
-\prob{5} We let $R_\ldt$ and $S_\ldt$ be graded rings.
-\begin{prop*}
-	A graded map $\phi:S_\ldt\to R_\ldt$ induces a morphism of schemes $\proj R\setminus V_+(\phi(S_+))\to \proj S$.
-\end{prop*}
-\begin{proof}
-	We note that $\proj R\setminus V_+(\phi(S_+))=D_+(\phi(S_+))=\bigcup_{f\in S_+} D(\phi(f))\subset \proj R$. Thus, it suffices to construct maps $D_+(\phi(f))\to D_+(f)$ and show that these maps glue to form the desired morphism of schemes. We have that $D_+(f)\cong \spec (S_f)_0$ and $D_+(\phi(f))\cong \spec (R_{\phi(f)})_0$ and thus it suffices to give a morphism of rings $(S_f)_0\to (R_{\phi(f)})_0$. We claim $\phi$ extends naturally to a map $S_f\to R_{\phi(f)}$ by universality. To see this, we let $\iota: R\to R_{\phi(f)}$ be the localization map (which we note is a \emph{graded} map) and consider $\iota\circ \phi: S\to R_{\phi(f)}$. As $(\iota\circ \phi)(f)\in R_{\phi(f)}^\times$, this induces a map $\tilde\phi:S_f\to R_{\phi(f)}$ by universal property of location. Furthermore, as $\iota$ and $\phi$ are graded maps, $\tilde\phi$ is as well, hence restricting to a map $\bar\phi(f):(S_f)_0\to (R_{\phi(f)})_0$ by $\frac{a}{f^k}\mapsto \frac{\phi(a)}{\phi(f)^k}$. As these maps are simply applying $\phi$ to numerator and denominator, it is immediately clear that they are compatible on intersections $D(fg)$, thus gluing to a map $\proj R\setminus V_+(\phi(S_+))\to \proj S$. 
-\end{proof}
-\prob{6}
-\begin{cor*}
-	In the context of the previous problem, if $\rad(\phi(S_+))=R_+$, then $V_+(\phi(S_+))=\emptyset$ (and hence $\phi$ induces a map $\proj R\to \proj S$).
-\end{cor*}
-\begin{proof}
-By the Nullstellensatz, $V(I)=V(\rad (I))$ for any $I\subset R$ (in $\spec R$). Thus, if $\rad(\phi(S_+))=R_+$, we have that $V(\phi(S_+))=V(R_+)$. As $V_+(I)\subset \proj R$ is the set $V(I)\cap \proj R$, we have that $V_+(\phi(S_+))=V_+(R_+)=\emptyset$, with this last equality coming from the definition of the $\proj$ operator, as $\proj R$ is the set of homogenous prime ideals not containing $R_+$ (i.e. the set of homogenous prime ideals not contained in $V_+(R_+)$).
-\end{proof}
-\prob{7}\begin{prop*}
- The inclusion of graded rings $\phi:S_{n\ldt}\into S_n$ induces an isomorphism $\proj S_\ldt\to \proj S_{n\ldt}$. 
-\end{prop*}
-\begin{proof} We first note that indeed, $\rad(\phi(S_{n+}))=S_+$ (as $f^n\in S_{n+}$ for any $f\in S_+$), so by problem 6, $\phi$ does induce a morphism of schemes $\proj S_\ldt\to \proj S_{n\ldt}$.
-	We note that in $\proj S_\ldt$,  $D_+(f)=D_+(f^n)$ for any $f\in S_+$ by a Nullstellensatz argument. We note as well that $f^n\in S_{n+}$ that is, the irrelevant ideal of $S_{n\ldt}$. As $f^n=\phi(f^n)$ for all $f$, we note that the map $((S_{n\ldt})_{f^n})_0\to ((S_\ldt)_f)_0$ is necessarily an injection by our response to problem 5. To show surjectivity, we let $a/f^k\in ((S_\ldt)_f)_0$. Then, $af^{n-k}\in S_{n\ldt}$, and indeed $af^{n-k}/f^n\in  ((S_{n\ldt})_{f^n})_0$ with $\phi(af^{n-k}/f^n)=a/f^k$. Thus, the induced map on an affine open cover of $\proj S_\ldt$ is an affine map corresponding to a ring isomorphism with targets forming an open cover of $\proj S_{n\ldt}$, so indeed the induced map on $\proj S_\ldt$ is an isomorphism.	\end{proof}
-\prob{8}
-\begin{prop*}
-	If $\varphi:S_\ldt \twoheadrightarrow R_\ldt$ is a surjective graded map, the induced morphism on schemes has domain $\proj R_\ldt$ and $\proj R_\ldt \to \proj S_\ldt$ is a closed embedding.
-\end{prop*}
-\begin{proof}
-We note that as $\varphi$ is a graded map, we have that $\varphi^{-1}(R_m)\subset S_m$. Moreover, as it is surjective, we have that $\varphi(S_m)=R_m$, and $\varphi(S_\ldt)=R_\ldt$. Then, by problem 6, we have that $\varphi$ induces a map $\tvphi:\proj R_\ldt \to \proj S_\ldt$. To see that $\tvphi$ is a closed embedding, we first note that it is affine by construction (in problem 5). We note that $\varphi(D(f)):S_f\to R_{\varphi(f)}$ is surjective by a quick first principles argument for any $f\in S_m$ for any $m>0$. As $D(\varphi(f))$ over such $f$ forms an open cover by basic opens on $\proj R_\ldt$ by surjectivity of $\varphi$, by problem 6 on the previous assignment $\tvphi$ is a closed embedding.
-\end{proof}
+	\prob{6}
+	\prob{7}
+	\prob{8}
 \end{document}
